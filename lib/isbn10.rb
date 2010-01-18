@@ -13,7 +13,7 @@ class ISBN10
   end
 
   def initialize(str)
-    @number = str.to_s
+    @number = str.to_s.gsub("-","")
   end
 
   def valid?
@@ -21,7 +21,7 @@ class ISBN10
   end
 
   def self.valid?(isbn)
-    isbn = isbn.to_s
+    isbn = isbn.to_s.gsub("-","")
     isbn.length == 10 && isbn == ISBN10.complete(isbn[0,9])
   end
 
