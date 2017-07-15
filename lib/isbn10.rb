@@ -6,7 +6,7 @@ class ISBN10
 
   class Version #:nodoc:
     Major = 1
-    Minor = 1
+    Minor = 2
     Tiny  = 0
 
     String = [Major, Minor, Tiny].join('.')
@@ -48,9 +48,77 @@ class ISBN10
     end
   end
 
+  def grouped
+    return nil unless self.valid?
+
+    if @number[0,1] == "0"
+      grouped_zero
+    elsif @number[0,1] == "1"
+      grouped_one
+    else
+      nil
+    end
+  end
+
   def to_ean
     return nil unless self.valid?
     EAN13.complete("978#{@number[0,9]}")
+  end
+
+  private
+
+  def grouped_zero
+    groups = [0]
+    buffer = @number[1,7].to_i
+
+    if buffer < 2000000
+      groups << @number[1,2]
+      groups << @number[3,6]
+    elsif buffer >= 2000000 && buffer < 7000000
+      groups << @number[1,3]
+      groups << @number[4,5]
+    elsif buffer >= 7000000 && buffer < 8500000
+      groups << @number[1,4]
+      groups << @number[5,4]
+    elsif buffer >= 8500000 && buffer < 9000000
+      groups << @number[1,5]
+      groups << @number[6,3]
+    elsif buffer >= 9000000 && buffer < 9500000
+      groups << @number[1,6]
+      groups << @number[7,2]
+    else
+      groups << @number[1,7]
+      groups << @number[8,1]
+    end
+    groups << @number[9,1]
+    groups.join("-")
+  end
+
+  def grouped_one
+    groups = [1]
+    buffer = @number[1,7].to_i
+
+    if buffer < 1000000
+      groups << @number[1,2]
+      groups << @number[3,6]
+    elsif buffer >= 1000000 && buffer < 4000000
+      groups << @number[1,3]
+      groups << @number[4,5]
+    elsif buffer >= 4000000 && buffer < 5500000
+      groups << @number[1,4]
+      groups << @number[5,4]
+    elsif buffer >= 5500000 && buffer < 8698000
+      groups << @number[1,5]
+      groups << @number[6,3]
+    elsif buffer >= 8698000 && buffer < 9990000
+      groups << @number[1,6]
+      groups << @number[7,2]
+    else
+      groups << @number[1,7]
+      groups << @number[8,1]
+    end
+    groups << @number[9,1]
+    groups.join("-")
   end
 
 end

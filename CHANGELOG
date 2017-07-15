@@ -1,3 +1,6 @@
+v1.2 (6th October 2010)
+* Add grouped() method for returning a ISBN with hyphens
+
 v1.1 (19th July 2010)
 * correctly recognise ISBN10s that end in a lower x
 
