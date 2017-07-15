@@ -15,7 +15,7 @@ Rake::RDocTask.new(:rdoc) do |rdoc|
   rdoc.rdoc_dir = 'rdoc'
   rdoc.title    = 'ISBN10'
   rdoc.options << '--line-numbers' << '--inline-source'
-  rdoc.rdoc_files.include('README.rdoc')
+  rdoc.rdoc_files.include('README.markdown')
   rdoc.rdoc_files.include('MIT-LICENSE')
   rdoc.rdoc_files.include('CHANGELOG')
   rdoc.rdoc_files.include('lib/**/*.rb')
