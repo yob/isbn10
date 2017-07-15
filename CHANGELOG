@@ -1,3 +1,6 @@
+v1.3 (15th July 2017)
+- Updated packaging to work well with ruby 1.9.3 to 2.4
+
 v1.2 (6th October 2010)
 * Add grouped() method for returning a ISBN with hyphens
 
