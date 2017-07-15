@@ -7,6 +7,8 @@ describe ISBN10 do
   it "should identify a valid ISBN10" do
     ISBN10.new("0140449043").valid?.should be_true
     ISBN10.new("0-140-44904-3").valid?.should be_true
+    ISBN10.new("043429067X").valid?.should be_true
+    ISBN10.new("043429067x").valid?.should be_true
   end
 
   it "should identify a valid ISBN10" do
@@ -29,9 +31,9 @@ describe ISBN10 do
 
   it "should convert to an EAN correctly" do
     ISBN10.new("0140449042").to_ean.should be_nil
-    isbn = ISBN10.new("0140449043")
-    isbn.valid?.should be_true
-    isbn.to_ean.should eql("9780140449044")
+    ISBN10.new("0140449043").to_ean.should eql("9780140449044")
+    ISBN10.new("043429067X").to_ean.should eql("9780434290673")
+    ISBN10.new("043429067x").to_ean.should eql("9780434290673")
   end
 
 end

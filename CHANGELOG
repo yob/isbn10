@@ -1,2 +1,5 @@
+v1.1 (19th July 2010)
+* correctly recognise ISBN10s that end in a lower x
+
 v1.0 (18th January 2010)
 - Initial Release

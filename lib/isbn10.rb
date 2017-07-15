@@ -6,7 +6,7 @@ class ISBN10
 
   class Version #:nodoc:
     Major = 1
-    Minor = 0
+    Minor = 1
     Tiny  = 0
 
     String = [Major, Minor, Tiny].join('.')
@@ -22,7 +22,7 @@ class ISBN10
 
   def self.valid?(isbn)
     isbn = isbn.to_s.gsub("-","")
-    isbn.length == 10 && isbn == ISBN10.complete(isbn[0,9])
+    isbn.length == 10 && isbn.to_s.upcase == ISBN10.complete(isbn[0,9])
   end
 
   # Purely for generating new ean numbers
