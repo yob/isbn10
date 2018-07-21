@@ -1,6 +1,6 @@
 Gem::Specification.new do |spec|
   spec.name = "isbn10"
-  spec.version = "1.3.0"
+  spec.version = "1.3.1"
   spec.summary = "a (very) small library for working with ISBN10 codes"
   spec.description = "a (very) small library for working with ISBN10 codes"
   spec.license = "MIT"
